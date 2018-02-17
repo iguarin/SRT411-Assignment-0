@@ -1,0 +1,140 @@
+--- 
+title: "Assignment 0 Intro to R and Github" 
+author: "Ishmael Guarin and Antonio Milutin; username: iguarin" 
+date: '2018-02-16' 
+output:
+  pdf_document: default
+  html_document: default
+---
+This R Markdown document is based on the R Tutorial called "A (very) short introduction to R" by Paul Torfs & Claudia Brauer" (https://cran.r-project.org/doc/contrib/Torfs+Brauer-Short-R-Intro.pdf)
+
+```{r}
+(2018-2016)/(2018-1997) * 100
+```
+The above code calculates the percentage of your life you have spent at this University. The year 2016 is the year I started studying at Seneca College and 1997 is my year of birth
+
+```{r}
+a=2018
+birthyear=1997
+startyearcollege=2016
+d=100
+(a-startyearcollege)/(a-birthyear)*d
+```
+This is the same concept as the previous ToDo but now with the use of variables.
+
+```{r} 
+b = c(4,5,8,11) 
+sum(b) 
+```
+ 
+ToDo Compute the sum of 4, 5, 8 
+and 11 by first combining them into a vector and then using the 
+function sum.
+
+```{r}
+plot(rnorm(100))
+```
+
+Plot 100 normal random numbers
+
+```{r}
+help(sqrt)
+```
+Finding help for the sqrt function. Alternatively, we can also type ?srt to display the help page. 
+Also, we can run scripts that have R code inside them.
+
+```{r}
+plot(rnorm(100))
+```
+
+The firstcript.R contains the code above. 
+
+```{r}
+P = seq(from=31, to=60)
+Q = matrix(data=P, ncol=5, nrow=6)
+P
+```
+This produces a sequence of numbers from 31 to 60 with an increment of 1.
+Then we created a matrix called Q which arranges the numbers in 5 columsna nd 6 rows. 
+
+```{r} 
+x1 = rnorm(100) 
+x2 = rnorm(100) 
+x3 = rnorm(100) 
+t = data.frame(a=x1, b=x1+x2, c=x1+x2+x3)
+plot(t)
+```
+
+This code assignes 100 random numbers to x1, x2, and x3. Then we created a data frame called t with three columns.
+
+```{r} 
+plot(t$a, type="l", ylim=range(t),lwd=3, col=rgb(1,0,0,0.3)) 
+lines(t$b, type="s", lwd=2,col=rgb(0.3,0.4,0.3,0.9))
+points(t$c, pch=20, cex=4,col=rgb(0,0,1,0.3))
+```
+rgb stands for red, blue and green. The three values of rgb represent the value of each colour. lwd represent the width of the line(thickness).cex tells you how big to magnify text. pch option is used to specify what symbols to use when plotting points.
+
+```{r}
+read_tst1txt = read.table( file="tst1.txt", header = TRUE)
+write.table(read_tst1txt$g * 5, file="tst2.txt", row.names=FALSE)
+read.table(file="tst2.txt")
+```
+
+We made a file called tst1.txt that has columns "a", "g" and "x". We read the file and multiplied the column "g" by 5 and stored the results to a file called tst2.txt.
+
+```{r}
+mean(sqrt(rnorm(100)))
+```
+rnorm might have generated some NaN numbers.
+
+```{r} 
+date1=strptime( c("20180216","20181220"),format="%Y%m%d") 
+present=c(10,2)
+date1
+```
+Presents the relationship of the current date to my next birthday and the number of presents.
+
+```{r}
+s = 1:100
+for (i in 1:100)
+{ 
+if (s[i] <5 | s[i] >90) 
+{ 
+s[i] = s[i] *10 
+} else 
+{  
+s[i] = s[i] * 0.1 
+} 
+}
+s
+```
+
+We generated a set of numbers from 1 to 100 then we multiplied the elements which are smaller than 5 and larger than 90 with 10. Other elements are multiplied with 0.1.
+```{r}
+k = 1:10 
+function1 = function(arg1)
+{ 
+l = length(arg1) 
+for( i in 1:l) 
+{
+if(arg1[i] < 5 | arg1[i] >90) 
+{ 
+arg1[i] = arg1[i] * 10 
+} else 
+{ 
+arg1[i] = arg1[i] *0.1 
+} 
+} 
+return(arg1) 
+}
+function1(arg1=k)
+```
+This is the same as the previous ToDo but now we can specify the values with the variable "k".
+
+
+References:
+http://rmarkdown.rstudio.com/
+http://nicercode.github.io/guides/reports/
+http://kbroman.org/knitr_knutshell/pages/markdown.html
+http://kbroman.org/knitr_knutshell/pages/Rmarkdown.html
+https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf
